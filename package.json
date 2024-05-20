@@ -1,0 +1,15 @@
+{
+  "name": "@viperfe/objects-ext",
+  "version": "0.0.1-alpha.1",
+  "description": "JS 拓展数据类型操作库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "objects",
+    "Set"
+  ],
+  "author": "mylhyz",
+  "license": "Apache-2.0"
+}
