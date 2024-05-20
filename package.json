@@ -4,12 +4,17 @@
   "description": "JS 拓展数据类型操作库",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build":"rollup -c",
+    "test": "jest"
   },
   "keywords": [
     "objects",
     "Set"
   ],
   "author": "mylhyz",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "rollup": "^4.17.2"
+  }
 }
