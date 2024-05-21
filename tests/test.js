@@ -63,3 +63,17 @@ test("CountableSet/toString", () => {
   array.push({ v: "abcde", c: 1 });
   expect(cs.toString()).toBe(array.toString());
 });
+
+test("CountableSet/sortByCount", () => {
+  let cs = new CountableSet();
+  cs.add("abcd");
+  cs.add("abcd");
+  cs.add("abcde");
+  cs.sortByCount();
+  let array = [];
+  array.push({ v: "abcd", c: 2 });
+  array.push({ v: "abcde", c: 1 });
+  const left = cs.first();
+  const right = array[0];
+  expect(left).equal(right);
+});

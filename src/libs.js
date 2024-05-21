@@ -26,6 +26,14 @@ class CountableSet {
       console.warn(`${item} 不存在`);
     }
   }
+  sortByCount() {
+    this.array.sort((a, b) => {
+      return b.c - a.c;
+    });
+  }
+  first() {
+    return this.array.at(0);
+  }
   toString() {
     return this.array.toString();
   }
