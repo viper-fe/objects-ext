@@ -35,7 +35,11 @@ class CountableSet {
     return this.array.at(0);
   }
   toString() {
-    return this.array.toString();
+    let arr = [];
+    for (let i of this.array) {
+      arr.push({ count: i.c, value: i.v });
+    }
+    return JSON.stringify(arr, null, 2);
   }
 }
 

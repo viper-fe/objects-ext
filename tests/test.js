@@ -61,7 +61,14 @@ test("CountableSet/toString", () => {
   let array = [];
   array.push({ v: "abcd", c: 2 });
   array.push({ v: "abcde", c: 1 });
-  expect(cs.toString()).toBe(array.toString());
+  let left = cs.toString();
+  let arr = [];
+  for (let i of array) {
+    arr.push({ count: i.c, value: i.v });
+  }
+  let right = JSON.stringify(arr, null, 2);
+  console.log(cs);
+  expect(left).toBe(right);
 });
 
 test("CountableSet/sortByCount", () => {
@@ -75,5 +82,5 @@ test("CountableSet/sortByCount", () => {
   array.push({ v: "abcde", c: 1 });
   const left = cs.first();
   const right = array[0];
-  expect(left).equal(right);
+  expect(left).toEqual(right);
 });
