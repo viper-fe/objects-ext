@@ -2,6 +2,13 @@
 
 JS 拓展数据类型操作库
 
+### 发布
+
+```bash
+npm run build
+npm test
+npm publish --tag alpha --access public
+```
 
 ### License 
 ```
