@@ -19,6 +19,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/viper-fe/objects-ext"
+    "url": "git+https://github.com/viper-fe/objects-ext.git"
   }
 }
