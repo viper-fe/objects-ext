@@ -26,6 +26,22 @@ test("CountableSet/add3", () => {
   expect(cs.size()).toBe(2);
 });
 
+test("CountableSet/add4", () => {
+  let cs = new CountableSet((e, i) => e == i);
+  cs.add("abcd");
+  cs.add("abcd");
+  cs.add("abcde");
+  expect(cs.size()).toBe(2);
+});
+
+test("CountableSet/add5", () => {
+  let cs = new CountableSet((e, i) => e.id == i.id);
+  cs.add({ id: 1, name: "abcd" });
+  cs.add({ id: 1, name: "abcde" });
+  cs.add({ id: 1, name: "abcdf" });
+  expect(cs.size()).toBe(1);
+});
+
 test("CountableSet/remove", () => {
   let cs = new CountableSet();
   cs.add("abcd");

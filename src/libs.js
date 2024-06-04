@@ -1,11 +1,19 @@
 class CountableSet {
   array = [];
-  constructor() {}
+  predicate = null;
+  constructor(predicate) {
+    this.predicate = predicate;
+  }
   size() {
     return this.array.length;
   }
   add(item) {
-    let found = this.array.find((e) => e.v == item);
+    let found = this.array.find((e) => {
+      if (this.predicate) {
+        return this.predicate(e.v, item);
+      }
+      return e.v == item;
+    });
     if (found) {
       found.c = found.c + 1;
     } else {
@@ -16,7 +24,12 @@ class CountableSet {
     }
   }
   remove(item) {
-    let found = this.array.find((e) => e.v == item);
+    let found = this.array.find((e) => {
+      if (this.predicate) {
+        return this.predicate(e.v, item);
+      }
+      return e.v == item;
+    });
     if (found) {
       found.c = found.c - 1;
       if (found.c == 0) {
