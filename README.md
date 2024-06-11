@@ -8,6 +8,9 @@ JS 拓展数据类型操作库
 npm run build
 npm test
 npm publish --tag alpha --access public
+# 或者发布latest版本
+npm publish --access public # 不指定tag
+npm publish --tag latest --access public #指定tag
 ```
 
 ### License 
