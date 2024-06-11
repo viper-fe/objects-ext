@@ -100,3 +100,41 @@ test("CountableSet/sortByCount", () => {
   const right = array[0];
   expect(left).toEqual(right);
 });
+
+test("CountableSet/toTable", () => {
+  let cs = new CountableSet();
+  cs.add("abcd");
+  cs.add("abcd");
+  cs.add("abcde");
+  cs.sortByCount();
+  let array = [];
+  array.push({ v: "abcd", c: 2 });
+  array.push({ v: "abcde", c: 1 });
+  let arr = [];
+  for (let i of array) {
+    arr.push({ count: i.c, value: i.v });
+  }
+  expect(cs.toTable()).toEqual(arr);
+});
+
+test("CountableSet/toTable2", () => {
+  let cs = new CountableSet((element, newElement) => {
+    return element.v == newElement.v;
+  });
+  cs.add({ v: "abcd" });
+  cs.add({ v: "abcd" });
+  cs.add({ v: "abcde" });
+  cs.sortByCount();
+  let array = [];
+  array.push({ v: "abcd", c: 2 });
+  array.push({ v: "abcde", c: 1 });
+  let arr = [];
+  for (let i of array) {
+    arr.push({ count: i.c, value: i.v });
+  }
+  const ex = cs.toTable((value) => {
+    return { value: value.v };
+  });
+  console.log(ex);
+  expect(ex).toEqual(arr);
+});

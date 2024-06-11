@@ -54,6 +54,21 @@ class CountableSet {
     }
     return JSON.stringify(arr, null, 2);
   }
+  toTable(spliter) {
+    let arr = [];
+    for (let i of this.array) {
+      let item = { count: i.c };
+      if (spliter) {
+        item = Object.assign({}, item, spliter(i.v));
+      } else {
+        item = Object.assign({}, item, {
+          value: i.v,
+        });
+      }
+      arr.push(item);
+    }
+    return arr;
+  }
 }
 
 export default {
