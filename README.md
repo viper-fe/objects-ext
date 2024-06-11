@@ -13,7 +13,8 @@ npm publish --access public # 不指定tag
 npm publish --tag latest --access public #指定tag
 ```
 
-### License 
+### License
+
 ```
 Copyright 2024 mylhyz
 
