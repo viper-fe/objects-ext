@@ -138,3 +138,19 @@ test("CountableSet/toTable2", () => {
   console.log(ex);
   expect(ex).toEqual(arr);
 });
+
+test("CountableSet/count1", () => {
+  let cs = new CountableSet((e, i) => e.id == i.id);
+  cs.add({ id: 1, name: "abcd" });
+  cs.add({ id: 1, name: "abcde" });
+  cs.add({ id: 1, name: "abcdf" });
+  expect(cs.count()).toBe(3);
+});
+
+test("CountableSet/count2", () => {
+  let cs = new CountableSet((e, i) => e.id == i.id);
+  cs.add({ id: 1, name: "abcde" });
+  cs.add({ id: 1, name: "abcde" });
+  cs.add({ id: 1, name: "abcde" });
+  expect(cs.count()).toBe(3);
+});
