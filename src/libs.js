@@ -75,8 +75,55 @@ class CountableSet {
     }
     return arr;
   }
+  toRawArray() {
+    return this._array;
+  }
+}
+
+class TrendingArray {
+  _array;
+  _predicate = null;
+  constructor(array, predicate) {
+    this._array = array;
+    this._predicate = predicate;
+    if (!this._predicate) {
+      throw Error("must set _predicate");
+    }
+  }
+
+  toTable(spliter) {
+    let arr = [];
+    let tableIndex = 0;
+    for (let item of this._array) {
+      tableIndex = tableIndex + 1;
+      let key = `c${tableIndex}`;
+      let _array = item.toRawArray(); // 得到的已经是去重的数据了
+      for (let _item of _array) {
+        //多个数组中的去重数据再去重
+        let found = arr.find((e) => {
+          return this._predicate(e, _item.v);
+        });
+        if (found) {
+          found[key] = _item.c;
+        } else {
+          let _obj = {};
+          if (spliter) {
+            _obj = Object.assign({}, _obj, spliter(_item.v));
+          } else {
+            _obj = Object.assign({}, _obj, {
+              value: _item.v,
+            });
+          }
+          _obj[key] = _item.c;
+          arr.push(_obj);
+        }
+      }
+    }
+    return arr;
+  }
 }
 
 export default {
   CountableSet,
+  TrendingArray,
 };

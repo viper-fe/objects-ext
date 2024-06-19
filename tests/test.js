@@ -1,4 +1,4 @@
-const { CountableSet } = require("../dist/libs");
+const { CountableSet, TrendingArray } = require("../dist/libs");
 
 test("CountableSet/create", () => {
   let cs = new CountableSet();
@@ -83,7 +83,6 @@ test("CountableSet/toString", () => {
     arr.push({ count: i.c, value: i.v });
   }
   let right = JSON.stringify(arr, null, 2);
-  console.log(cs);
   expect(left).toBe(right);
 });
 
@@ -135,7 +134,6 @@ test("CountableSet/toTable2", () => {
   const ex = cs.toTable((value) => {
     return { value: value.v };
   });
-  console.log(ex);
   expect(ex).toEqual(arr);
 });
 
@@ -154,3 +152,29 @@ test("CountableSet/count2", () => {
   cs.add({ id: 1, name: "abcde" });
   expect(cs.count()).toBe(3);
 });
+
+// test("TrendingArray/toTable", () => {
+//   const _predicate = (e, i) => e.id == i.id;
+//   let cs1 = new CountableSet(_predicate);
+//   cs1.add({ id: 1, name: "abcde" });
+//   cs1.add({ id: 1, name: "abcde" });
+//   cs1.add({ id: 2, name: "abcde1" });
+
+//   let cs2 = new CountableSet(_predicate);
+//   cs2.add({ id: 1, name: "abcde" });
+//   cs2.add({ id: 2, name: "abcde1" });
+//   cs2.add({ id: 2, name: "abcde1" });
+
+//   let cs3 = new CountableSet(_predicate);
+//   cs3.add({ id: 2, name: "abcde1" });
+//   cs3.add({ id: 2, name: "abcde1" });
+//   cs3.add({ id: 2, name: "abcde1" });
+
+//   let ta = new TrendingArray([cs1, cs2, cs3], _predicate);
+//   console.table(
+//     ta.toTable((value) => {
+//       return { ...value };
+//     })
+//   );
+//   // expect(cs.count()).toBe(3);
+// });
